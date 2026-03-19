@@ -88,3 +88,15 @@ python src/transfermarkt_scraper.py
 - add a unified feature table that joins FIFA and Transfermarkt records by player
 - track model-ready features such as value-growth slope and volatility
 - formalize evaluation with time-based train/test splits for forward-looking prediction
+
+## Contributing
+
+Lightweight contribution guidelines are available in CONTRIBUTING.md.
+
+## License
+
+This project is distributed under the MIT License. See LICENSE.
+
+## Author
+
+Santiago Valdes Uriarte
