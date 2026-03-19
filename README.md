@@ -1,70 +1,90 @@
 # Early Talent Identification in Football
 
-End-to-end data project focused on identifying high-potential young football players by combining FIFA game data (static attributes) with Transfermarkt market-value data (dynamic, real-world signals).
+Data science project that combines static player attributes (FIFA dataset) with dynamic market signals (Transfermarkt scraping) to identify high-potential young players and analyze early career value patterns.
 
-## Project Objective
+## Why This Project
 
-Build an analytical workflow to detect early indicators of future player value growth using:
+Scouting and talent investment decisions are made under uncertainty. This project explores how historical player attributes and market-value evolution can support earlier and more structured decision-making.
 
-- large-scale FIFA player data analysis with PySpark SQL
-- exploratory statistical analysis by age, nationality, and position
-- young-player potential screening (age < 21)
-- Transfermarkt scraping for market value, contract information, and value timeline
+The analysis is academically grounded and portfolio-oriented, with a focus on transparency and reproducibility.
+
+## Scope
+
+- FIFA player analytics at scale with PySpark SQL
+- exploratory analysis by age, nationality, and position
+- ranking young players by potential (age < 21)
+- Transfermarkt scraping for market value, contract expiry, and timeline history
+- optional export of scraped records to BigQuery
 
 ## Repository Structure
 
-- `notebooks/01_fifa_spark_eda.ipynb`: exploratory analysis of FIFA dataset with PySpark SQL
-- `notebooks/02_transfermarkt_scrape.ipynb`: Transfermarkt scraping notebook and market value evolution plots
-- `src/fifa_spark_eda.py`: script version of core Spark SQL analysis
-- `src/transfermarkt_scraper.py`: script version of Transfermarkt scraping workflow
-- `reports/ProyectoFinalBigData-Isunza_Valdes.pdf`: project report
-- `data/processed/`: optional output directory for cleaned exports
+- `notebooks/01_fifa_spark_eda.ipynb`: Spark SQL exploratory analysis notebook
+- `notebooks/02_transfermarkt_scrape.ipynb`: Transfermarkt scraping notebook
+- `src/fifa_spark_eda.py`: script version of the Spark SQL workflow
+- `src/transfermarkt_scraper.py`: script version of the Transfermarkt workflow
+- `reports/ProyectoFinalBigData-Isunza_Valdes.pdf`: full project report
+- `data/processed/`: local output directory for optional exports
 
-## Main Analyses
+## Analysis Covered
 
-1. Distribution of players by age and nationality
-2. Average pace/shooting/passing/dribbling by age and nationality
-3. Top 10 players under 21 with highest potential
-4. Average attribute profile by club position
+1. Age distribution by nationality
+2. Mean pace, shooting, passing, and dribbling by age and nationality
+3. Top young players by potential
+4. Mean attribute profile by club position
 5. Average market value by nationality
-6. Market value trajectory analysis for selected high-potential players
+6. Market-value trajectory visualizations for selected players
 
-## Key Tools
+## Tech Stack
 
 - Python
 - PySpark SQL
 - Pandas
-- Matplotlib / Seaborn
-- BeautifulSoup + Requests
-- BigQuery (optional export target)
+- Matplotlib and Seaborn
+- Requests and BeautifulSoup
+- BigQuery (optional)
 
 ## Setup
 
-1. Create and activate a virtual environment.
-2. Install dependencies:
+1. Create a Python virtual environment.
+2. Activate the environment.
+3. Install dependencies.
 
 ```bash
 pip install -r requirements.txt
 ```
 
-3. If running Spark analysis, ensure your dataset path is available (local or HDFS).
+4. Ensure Spark is available in your environment.
+5. Update dataset path in the notebook or script if your `male_players.csv` location differs.
 
-## Running the Scripts
+## How To Run
 
-Spark EDA:
+Run Spark EDA script:
 
 ```bash
 python src/fifa_spark_eda.py
 ```
 
-Transfermarkt scraper:
+Run Transfermarkt scraper script:
 
 ```bash
 python src/transfermarkt_scraper.py
 ```
 
-## Notes
+## Practical Notes
 
-- Transfermarkt data can change over time, so values and timelines may differ from prior runs.
-- The notebook in `notebooks/02_transfermarkt_scrape.ipynb` includes BigQuery upload examples.
-- For interview discussion, this project is useful to explain early-signal detection, uncertainty, and data-driven scouting decisions.
+- Transfermarkt values evolve over time, so reruns may produce different numbers.
+- Scraping behavior may change as site structure changes.
+- In the original project environment, parts of the workflow used HDFS/Dataproc constraints documented in the report.
+
+## Interview Talking Points
+
+- framing player scouting as early-signal detection under uncertainty
+- combining static and dynamic data sources into one analytical workflow
+- using PySpark SQL for scalable exploration before deeper modeling
+- moving from descriptive insights to investment-style decision hypotheses
+
+## Next Extensions
+
+- add a unified feature table that joins FIFA and Transfermarkt records by player
+- track model-ready features such as value-growth slope and volatility
+- formalize evaluation with time-based train/test splits for forward-looking prediction
