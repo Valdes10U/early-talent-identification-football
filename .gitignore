@@ -1,0 +1,23 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+
+# Data outputs
+data/processed/*.csv
+data/processed/*.parquet
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
